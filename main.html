@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The End</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;            /* full screen height */
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+
+      display: flex;            /* center everything */
+      flex-direction: column;   /* stack items top to bottom */
+      justify-content: center;  /* vertical centering */
+      align-items: center;      /* horizontal centering */
+    }
+
+    h1 {
+      font-size: 5rem;
+      margin: 0;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>The End</h1>
+  <div id="countdown"></div>
+
+  <script>
+    // 1. Pick the date you're counting down to
+    const target = new Date("October 31, 2026 23:59:59").getTime();
+
+    // 2. This function runs over and over
+    function update() {
+      const now = new Date().getTime();
+      const diff = target - now;   // milliseconds remaining
+
+      // If time is up, show a final message
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "Goodbye, Year 2.";
+        return;
+      }
+
+      // 3. Convert milliseconds into days, hours, minutes, seconds
+      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      // 4. Put the text on the page
+      document.getElementById("countdown").textContent =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    }
+
+    update();                    // run once immediately
+    setInterval(update, 1000);   // then repeat every 1000 ms (1 second)
+  </script>
+</body>
+</html>
