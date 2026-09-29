@@ -21,7 +21,7 @@
 
     h1 {
       font-size: 5rem;
-      margin:0 ;
+      margin: 0;
     }
 
     #countdown {
@@ -33,7 +33,7 @@
 
 <body>
   <h1>The End</h1>
-  <div id="Till the end of 2L"></div>
+  <div id="countdown"></div>
 
   <script>
     // 1. Pick the date you're counting down to
@@ -46,7 +46,7 @@
 
       // If time is up, show a final message
       if (diff <= 0) {
-        document.getElementById("countdown").textContent = "Goodbye, Year 2.";
+        document.getElementById("countdown").textContent = "It is over.";
         return;
       }
 
